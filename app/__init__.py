@@ -1,0 +1,1 @@
+"""Astro Platform application package."""
