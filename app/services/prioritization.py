@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import get_settings
 from app.core.enums import RuleStatus, RuleType
-from app.core.exceptions import DomainValidationError, NotFoundError
+from app.core.exceptions import NotFoundError
 from app.models.chart import Chart, ChartAspect, ChartPosition
 from app.models.editorial import InterpretationRule, School
 from app.models.prioritization import (

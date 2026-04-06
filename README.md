@@ -1,20 +1,21 @@
 # Astrologydatabase
 
-Backend modular para um sistema astrológico profissional com FastAPI, SQLAlchemy, Alembic e PostgreSQL.
+Backend modular para um sistema astrologico profissional com FastAPI, SQLAlchemy, Alembic e PostgreSQL.
 
 ## O que existe agora
 
 - API FastAPI modular em `app/`
-- domínio de referência astrológica e domínio editorial
-- camada natal com cálculo, snapshot persistido e consulta de fatores
+- dominio de referencia astrologica e dominio editorial
+- camada natal com calculo, snapshot persistido e consulta de fatores
+- motor de priorizacao interpretativa com matches, prioridades e clusters tematicos
 - migrations Alembic em `alembic/versions/`
-- seed mínimo em `scripts/seed/minimal_seed.py`
-- testes de integração em `tests/`
+- seed minimo em `scripts/seed/minimal_seed.py`
+- testes de integracao em `tests/`
 - estrutura reservada para `app/admin/` e `app/workers/`
 
-## Setup rápido
+## Setup rapido
 
-1. Instale as dependências:
+1. Instale as dependencias:
 
 ```bash
 pip install -r requirements.txt
@@ -28,7 +29,7 @@ pip install -r requirements.txt
 python -c "from alembic.config import main; main(argv=['upgrade', 'head'])"
 ```
 
-4. Rode o seed mínimo:
+4. Rode o seed minimo:
 
 ```bash
 python scripts/seed/minimal_seed.py
@@ -45,11 +46,23 @@ uvicorn app.main:app --reload
 - `POST /api/v1/charts/natal`
 - `GET /api/v1/charts/{chart_id}`
 - `GET /api/v1/charts/{chart_id}/factors`
+- `POST /api/v1/charts/{chart_id}/interpretive-priority`
+- `GET /api/v1/charts/{chart_id}/interpretive-priority`
 
-## Provider de efemérides
+## Motor interpretativo
 
-- `analytical` é o provider padrão para desenvolvimento e testes
-- `swisseph` já está preparado por adapter opcional
+O motor de priorizacao usa o snapshot natal e as `interpretation_rules` publicadas para:
+
+- selecionar regras relevantes
+- combinar planeta em signo, planeta em casa, aspectos e regencias
+- aplicar peso por angularidade, exatidao e regente do ascendente
+- reforcar temas recorrentes
+- persistir uma estrutura intermediaria para a futura camada de sintese
+
+## Provider de efemerides
+
+- `analytical` e o provider padrao para desenvolvimento e testes
+- `swisseph` ja esta preparado por adapter opcional
 
 Configure por ambiente:
 

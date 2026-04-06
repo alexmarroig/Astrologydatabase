@@ -3,17 +3,17 @@
 ## Banco
 
 O projeto usa `DATABASE_URL` e `DATABASE_ASYNC_URL` para PostgreSQL.
-O arquivo `.env.example` traz uma configuração base.
+O arquivo `.env.example` traz uma configuracao base.
 
 ## Fluxo recomendado
 
-1. Instalar dependências
+1. Instalar dependencias
 2. Subir PostgreSQL
 3. Executar `alembic upgrade head`
 4. Executar `python scripts/seed/minimal_seed.py`
 5. Subir `uvicorn app.main:app --reload`
 
-## Seed mínimo
+## Seed minimo
 
 O seed inicial cria:
 
@@ -21,24 +21,34 @@ O seed inicial cria:
 - 7 corpos celestes principais
 - 12 casas
 - 5 aspectos maiores
-- 4 ângulos
+- 4 angulos
 - 1 escola editorial inicial
 
 ## Camada natal
 
 Esta etapa adiciona:
 
-- provider abstrato de efemérides
-- provider analítico embutido
+- provider abstrato de efemerides
+- provider analitico embutido
 - adapter preparado para Swiss Ephemeris
-- persistência de snapshots natais
-- endpoints para criação e consulta de mapas
+- persistencia de snapshots natais
+- endpoints para criacao e consulta de mapas
+
+## Motor interpretativo
+
+Esta etapa adiciona:
+
+- priorizacao intermediaria baseada em regras publicadas
+- persistencia de `interpretive_matches`
+- persistencia de `interpretive_priority`
+- persistencia de `thematic_clusters`
+- endpoints para calcular e consultar o snapshot interpretativo
 
 ## Limites atuais
 
-Ainda não entram nesta etapa:
+Ainda nao entram nesta etapa:
 
-- cálculo de alta precisão por padrão
-- workers de produção
+- calculo de alta precisao por padrao
+- workers de producao
 - painel admin funcional
-- síntese interpretativa com LLM
+- sintese interpretativa com LLM

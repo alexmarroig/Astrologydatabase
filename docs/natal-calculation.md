@@ -6,14 +6,14 @@ Persistir snapshots completos de mapas natais para consulta posterior e para uso
 
 ## Provider de efemerides
 
-O sistema expõe uma interface abstrata em `app/domain/ephemeris.py`.
+O sistema expoe uma interface abstrata em `app/domain/ephemeris.py`.
 
-Implementações atuais:
+Implementacoes atuais:
 
 - `AnalyticalEphemerisProvider`
 - `SwissEphemerisProvider`
 
-O provider analítico é determinístico e serve para desenvolvimento e testes.
+O provider analitico e deterministico e serve para desenvolvimento e testes.
 O adapter Swiss Ephemeris fica pronto para uso quando `pyswisseph` estiver instalado e `EPHEMERIS_PROVIDER=swisseph`.
 
 ## Snapshot persistido
@@ -30,10 +30,10 @@ Tabelas novas:
 
 1. Receber data, hora local, timezone offset e coordenadas
 2. Converter para UTC
-3. Calcular posições planetárias via provider
-4. Calcular ângulos e casas
+3. Calcular posicoes planetarias via provider
+4. Calcular angulos e casas
 5. Derivar aspectos
-6. Derivar regências
+6. Derivar regencias
 7. Persistir o snapshot completo
 
 ## Endpoints
@@ -41,3 +41,5 @@ Tabelas novas:
 - `POST /api/v1/charts/natal`
 - `GET /api/v1/charts/{chart_id}`
 - `GET /api/v1/charts/{chart_id}/factors`
+- `POST /api/v1/charts/{chart_id}/interpretive-priority`
+- `GET /api/v1/charts/{chart_id}/interpretive-priority`
