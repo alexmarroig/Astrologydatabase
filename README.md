@@ -8,6 +8,7 @@ Backend modular para um sistema astrologico profissional com FastAPI, SQLAlchemy
 - dominio de referencia astrologica e dominio editorial
 - camada natal com calculo, snapshot persistido e consulta de fatores
 - motor de priorizacao interpretativa com matches, prioridades e clusters tematicos
+- contrato editorial engine-ready para datasets helenisticos em `data/`
 - migrations Alembic em `alembic/versions/`
 - seed minimo em `scripts/seed/minimal_seed.py`
 - testes de integracao em `tests/`
@@ -58,6 +59,24 @@ O motor de priorizacao usa o snapshot natal e as `interpretation_rules` publicad
 - aplicar peso por angularidade, exatidao e regente do ascendente
 - reforcar temas recorrentes
 - persistir uma estrutura intermediaria para a futura camada de sintese
+
+## Dataset editorial
+
+O projeto agora suporta um contrato engine-ready separado do schema relacional atual:
+
+- datasets versionaveis em `data/hellenistic/`
+- validacao estrutural em `scripts/seed/contracts.py`
+- carga idempotente em `scripts/seed/full_seed.py`
+
+O primeiro lote cobre `planet_in_sign` com seed no formato modular:
+
+- `subject_1_type` / `subject_1_id`
+- `subject_2_type` / `subject_2_id`
+- `system`
+- `core_statement`
+- `manifestation`
+- `risk_expression`
+- `modifiers_json`
 
 ## Provider de efemerides
 

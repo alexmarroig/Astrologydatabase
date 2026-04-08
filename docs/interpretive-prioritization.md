@@ -48,3 +48,29 @@ O snapshot retornado contem:
 - `matches`: correspondencias fator-regra antes da consolidacao
 - `priorities`: itens ordenados e deduplicados para sintese futura
 - `clusters`: agrupamentos tematicos de alto nivel
+
+## Contrato editorial engine-ready
+
+Para a expansao helenistica, o conteudo interpretativo novo passa a existir primeiro em dataset estruturado:
+
+- `data/hellenistic/planet_in_sign.py`
+
+Cada item usa:
+
+- `subject_1_type` / `subject_1_id`
+- `subject_2_type` / `subject_2_id`
+- `system`
+- `base_weight`
+- `core_statement`
+- `manifestation`
+- `risk_expression`
+- `modifiers_json`
+
+O validador em `scripts/seed/contracts.py` garante:
+
+- campos obrigatorios
+- identificadores em lowercase
+- shape computavel de `modifiers_json`
+- ranges padronizados de `weight_delta`
+
+O loader em `scripts/seed/full_seed.py` faz a ponte desse contrato novo para o schema relacional atual.
